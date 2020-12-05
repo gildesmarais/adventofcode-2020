@@ -1,0 +1,8 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  DisplayCopNames: true
+  NewCops: enable
+
+Style/Documentation:
+  Exclude:
+    - 'day*/code.rb'
