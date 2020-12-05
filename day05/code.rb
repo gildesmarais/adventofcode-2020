@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'set'
+
 class BoardingPass
   SEATS_PER_ROW = 8
 
@@ -26,4 +28,12 @@ passes = File.read(File.join(__dir__, 'input.txt'))
              .split("\n")
              .map { |code| BoardingPass.new code }
 
-puts passes.map(&:id).max
+highest_id = passes.map(&:id).max
+
+puts 'Part 1: highest seat id'
+puts highest_id
+puts 'Part 2: my seat id'
+
+ids = passes.map(&:id).to_set
+seat_without_successor = ids.sort.reject { |id| ids.member?(id.succ) }.first
+puts seat_without_successor + 1
